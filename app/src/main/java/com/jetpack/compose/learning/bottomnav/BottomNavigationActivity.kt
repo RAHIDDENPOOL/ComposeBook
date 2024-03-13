@@ -1,5 +1,6 @@
 package com.jetpack.compose.learning.bottomnav
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,6 +46,7 @@ class BottomNavigationActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     fun MainContent() {
         val navController = rememberNavController()
@@ -103,6 +105,7 @@ class BottomNavigationActivity : ComponentActivity() {
                                             launchSingleTop = true
                                         }
                                     }
+
                                     else -> {
                                         navHostController.navigate(screen.route) {
                                             launchSingleTop = true
@@ -138,11 +141,13 @@ class BottomNavigationActivity : ComponentActivity() {
             }
 
             // Passing args with default values
-            composable(ScreenType.Notifications.route.plus("/?$NOTIFICATION_ARGUMENT_KEY={$NOTIFICATION_ARGUMENT_KEY}"),
+            composable(
+                ScreenType.Notifications.route.plus("/?$NOTIFICATION_ARGUMENT_KEY={$NOTIFICATION_ARGUMENT_KEY}"),
                 arguments = listOf(navArgument(NOTIFICATION_ARGUMENT_KEY) {
                     type = NavType.IntType
                     defaultValue = 50
-                })) { backStackEntry ->
+                })
+            ) { backStackEntry ->
                 NotificationScreen(backStackEntry.arguments?.getInt(NOTIFICATION_ARGUMENT_KEY))
             }
 

@@ -95,6 +95,8 @@ dependencies {
     //Animation
     implementation "androidx.compose.animation:animation:$compose_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'org.testng:testng:6.9.6'
+    testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
     //Google Maps
